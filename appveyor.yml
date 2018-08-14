@@ -34,7 +34,7 @@ environment:
 
 # Install NuGet to interact with the PowerShell Gallery
 install:
-  - ps: [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+  - ps: $([Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12)
   - ps: $RevivePost = Invoke-RestMethod -Uri 'https://msadministrator.github.io/index.xml' | Get-Random
   - ps: Install-Module -Name PoshTwit -Force -Verbose 
   - ps: $TweetContent = "Blog Archive: $($RevivePost.title) $($RevivePost.link)"
